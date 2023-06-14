@@ -1,6 +1,6 @@
 module "blue_green" {
   source  = "app.terraform.io/fer1035/blue-green-canary/aws"
-  version = "1.1.3"
+  version = "1.1.4"
 
   vpc_id                      = module.network.vpc_id
   subnet_ids                  = [module.network.public_subnet_1, module.network.public_subnet_2]
