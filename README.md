@@ -20,7 +20,7 @@ The **traffic_distribution** parameter controls how much traffic flows to the Bl
 | blue-10 | 10 | 90 |
 | blue-0 | 0 | 100 |
 
-## Minumum Prerequisites For Testing
+## Minimum Prerequisites For Testing
 
 > The [full example code](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.2/examples) shows a more elaborate configuration using multiple modules and web server Instances separate from this module for more modular target attachments.
 
