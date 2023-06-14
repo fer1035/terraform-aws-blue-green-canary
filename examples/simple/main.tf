@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 module "blue_green" {
-  source = "app.terraform.io/my-org/blue-green-canary/tfe"
+  source = "app.terraform.io/fer1035/blue-green-canary/aws"
 
   vpc_id     = "vpc-askj2131jbb2jk3h1bj"
   subnet_ids = ["subnet-askljhkl345634", "subnet-iluhkj67nk57n"]

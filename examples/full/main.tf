@@ -1,9 +1,9 @@
 module "blue_green" {
-  source  = "app.terraform.io/my-org/blue-green-canary/tfe"
-  version = "1.1.0"
+  source  = "app.terraform.io/fer1035/blue-green-canary/aws"
+  version = "1.1.1"
 
   vpc_id                      = module.network.vpc_id
-  subnet_ids                  = [module.network.subnet_public_1_az, modukle.network.subnet_public_2_az]
+  subnet_ids                  = [module.network.public_subnet_1, module.network.public_subnet_2]
   sg_ids                      = [module.security_group_web.security_group_id]
   internal                    = false
   port                        = 80
@@ -18,25 +18,25 @@ module "blue_green" {
 
 resource "aws_lb_target_group_attachment" "blue_0" {
   target_group_arn = module.blue_green.blue_target_group.arn
-  target_id        = select(split("/", module.web_server_blue_0.instance_arn), 1)
+  target_id        = element(split("/", module.web_server_blue_0.instance_arn), 1)
   port             = 80
 }
 
 resource "aws_lb_target_group_attachment" "blue_1" {
   target_group_arn = module.blue_green.blue_target_group.arn
-  target_id        = select(split("/", module.web_server_blue_1.instance_arn), 1)
+  target_id        = element(split("/", module.web_server_blue_1.instance_arn), 1)
   port             = 80
 }
 
 resource "aws_lb_target_group_attachment" "green_0" {
   target_group_arn = module.blue_green.green_target_group.arn
-  target_id        = select(split("/", module.web_server_green_0.instance_arn), 1)
+  target_id        = element(split("/", module.web_server_green_0.instance_arn), 1)
   port             = 80
 }
 
 resource "aws_lb_target_group_attachment" "green_1" {
   target_group_arn = module.blue_green.green_target_group.arn
-  target_id        = select(split("/", module.web_server_green_1.instance_arn), 1)
+  target_id        = element(split("/", module.web_server_green_1.instance_arn), 1)
   port             = 80
 }
 
