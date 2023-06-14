@@ -2,6 +2,8 @@ resource "aws_lb_listener" "listener" {
   load_balancer_arn = aws_lb.alb.arn
   port              = var.port
   protocol          = var.protocol
+  ssl_policy        = var.ssl_policy
+  certificate_arn   = var.ssl_certificate_arn
 
   default_action {
     type = "forward"
