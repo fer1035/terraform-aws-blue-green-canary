@@ -1,21 +1,43 @@
 module "blue_green" {
   source  = "app.terraform.io/my-org/blue-green-canary/tfe"
-  version = "1.0.1"
+  version = "1.1.0"
 
-  vpc_id                      = "vpc-askj2131jbb2jk3h1bj"
-  subnet_ids                  = ["subnet-askljhkl345634", "subnet-iluhkj67nk57n"]
-  sg_ids                      = ["sg-kjhjkln6k75nk"]
+  vpc_id                      = module.network.vpc_id
+  subnet_ids                  = [module.network.subnet_public_1_az, modukle.network.subnet_public_2_az]
+  sg_ids                      = [module.security_group_web.security_group_id]
   internal                    = false
-  port                        = 443
-  protocol                    = "HTTPS"
-  ssl_policy                  = "ELBSecurityPolicy-TLS13-1-2-2021-06"
-  ssl_certificate_arn         = "arn:aws:iam::123456789012:server-certificate/my_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+  port                        = 80
+  protocol                    = "HTTP"
+  ssl_policy                  = null
+  ssl_certificate_arn         = null
   target_healthcheck_timeout  = 5
   target_healthcheck_interval = 10
-  blue_target_id              = "i-lkjhkl4353nb53jk4"
-  green_target_id             = "i-lkjasd9o8y34k5jn3"
 
   traffic_distribution = "blue-90"
+}
+
+resource "aws_lb_target_group_attachment" "blue_0" {
+  target_group_arn = module.blue_green.blue_target_group.arn
+  target_id        = select(split("/", module.web_server_blue_0.instance_arn), 1)
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "blue_1" {
+  target_group_arn = module.blue_green.blue_target_group.arn
+  target_id        = select(split("/", module.web_server_blue_1.instance_arn), 1)
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "green_0" {
+  target_group_arn = module.blue_green.green_target_group.arn
+  target_id        = select(split("/", module.web_server_green_0.instance_arn), 1)
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "green_1" {
+  target_group_arn = module.blue_green.green_target_group.arn
+  target_id        = select(split("/", module.web_server_green_1.instance_arn), 1)
+  port             = 80
 }
 
 output "deployment" {
