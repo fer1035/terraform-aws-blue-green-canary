@@ -16,12 +16,12 @@ provider "aws" {
 module "blue_green" {
   source = "app.terraform.io/my-org/blue-green-canary/tfe"
 
-  vpc_id          = "vpc-askj2131jbb2jk3h1bj"
-  subnet_ids      = ["subnet-askljhkl345634", "subnet-iluhkj67nk57n"]
-  sg_ids          = ["sg-kjhjkln6k75nk"]
+  vpc_id     = "vpc-askj2131jbb2jk3h1bj"
+  subnet_ids = ["subnet-askljhkl345634", "subnet-iluhkj67nk57n"]
+  sg_ids     = ["sg-kjhjkln6k75nk"]
 
   targets = {
-    blue  = {
+    blue = {
       id   = "i-lkjhkl4353nb53jk4"
       port = 80
     }

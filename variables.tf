@@ -60,7 +60,7 @@ variable "targets" {
   description = "Blue and Green target details for a simple deployment."
 
   default = {
-    blue  = {
+    blue = {
       id   = null
       port = null
     }
