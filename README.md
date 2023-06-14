@@ -35,14 +35,14 @@ The following prerequisites are for the [simple example](https://github.com/fer1
 - Configure your web servers to output Blue-Green indicators.
 
     ```
-    # Blue Server (assuming Amazon Linux 2025 EC2 Instances)
+    # Blue Server (assuming Amazon Linux 2023 EC2 Instances)
     sudo yum update -y
     sudo yum install httpd -y
     sudo systemctl enable httpd
     sudo systemctl start httpd
     sudo echo "Blue" > /var/www/html/index.html
 
-    # Green Server (assuming Amazon Linux 2025 EC2 Instances)
+    # Green Server (assuming Amazon Linux 2023 EC2 Instances)
     sudo yum update -y
     sudo yum install httpd -y
     sudo systemctl enable httpd
@@ -50,7 +50,7 @@ The following prerequisites are for the [simple example](https://github.com/fer1
     sudo echo "Green" > /var/www/html/index.html
     ```
 
-- The module outputs a cURL command that you coan use to invokethe ALB URL and test whether the Blue-Green weightings look correct.
+- The module outputs a cURL command that you can use to invoke the ALB URL and test whether the Blue-Green weightings look correct.
 
     ```
     for i in `seq 1 100`; do curl '<ALB URL>'; done
