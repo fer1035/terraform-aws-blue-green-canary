@@ -11,12 +11,6 @@ resource "aws_lb_target_group" "blue" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "blue" {
-  target_group_arn = aws_lb_target_group.blue.arn
-  target_id        = var.blue_target_id
-  port             = var.port
-}
-
 resource "aws_lb_target_group" "green" {
   port     = var.port
   protocol = var.protocol
@@ -30,8 +24,18 @@ resource "aws_lb_target_group" "green" {
   }
 }
 
+resource "aws_lb_target_group_attachment" "blue" {
+  count = var.targets.blue.id != null ? 1 : 0
+
+  target_group_arn = aws_lb_target_group.blue.arn
+  target_id        = var.targets.blue.id
+  port             = var.targets.blue.port
+}
+
 resource "aws_lb_target_group_attachment" "green" {
+  count = var.targets.green.id != null ? 1 : 0
+
   target_group_arn = aws_lb_target_group.green.arn
-  target_id        = var.green_target_id
-  port             = var.port
+  target_id        = var.targets.green.id
+  port             = var.targets.green.port
 }

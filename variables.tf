@@ -55,14 +55,20 @@ variable "target_healthcheck_interval" {
   default     = 10
 }
 
-variable "blue_target_id" {
-  type        = string
-  description = "Blue target ID."
-}
+variable "targets" {
+  type        = map(any)
+  description = "Blue and Green target details for a simple deployment."
 
-variable "green_target_id" {
-  type        = string
-  description = "Green target ID."
+  default = {
+    blue  = {
+      id   = null
+      port = null
+    }
+    green = {
+      id   = null
+      port = null
+    }
+  }
 }
 
 variable "traffic_distribution" {
