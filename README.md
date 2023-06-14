@@ -22,9 +22,9 @@ The **traffic_distribution** parameter controls how much traffic flows to the Bl
 
 ## Minumum Prerequisites For Testing
 
-> The [full example code](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.1/examples) shows a more elaborate configuration using multiple modules and web server Instances separate from this module for more modular target attachments.
+> The [full example code](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.2/examples) shows a more elaborate configuration using multiple modules and web server Instances separate from this module for more modular target attachments.
 
-The following prerequisites are for the [simple example](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.1/examples):
+The following prerequisites are for the [simple example](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.2/examples):
 
 - A VPC with at least 2 public Subnets for the ALB.
 - A Security Group within the same VPC as above that allows corresponding traffic to the ALB.
