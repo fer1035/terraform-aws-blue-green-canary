@@ -22,13 +22,25 @@ variable "internal" {
 variable "port" {
   type        = number
   description = "Listener and Target Group port."
-  default     = 443
+  default     = 80
 }
 
 variable "protocol" {
   type        = string
   description = "Listener and Target Group protocol."
-  default     = "HTTPS"
+  default     = "HTTP"
+}
+
+variable "ssl_policy" {
+  type        = string
+  description = "SSL policy to use with the HTTPS listener. The latest value during the publication of this module version is \"ELBSecurityPolicy-TLS13-1-2-2021-06\"."
+  default     = null
+}
+
+variable "ssl_certificate_arn" {
+  type        = string
+  description = "The certificate ARN to use with the HTTPS listener"
+  default     = null
 }
 
 variable "target_healthcheck_timeout" {

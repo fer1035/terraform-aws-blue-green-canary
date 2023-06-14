@@ -198,9 +198,11 @@ No modules.
 | <a name="input_blue_target_id"></a> [blue\_target\_id](#input\_blue\_target\_id) | Blue target ID. | `string` | n/a | yes |
 | <a name="input_green_target_id"></a> [green\_target\_id](#input\_green\_target\_id) | Green target ID. | `string` | n/a | yes |
 | <a name="input_internal"></a> [internal](#input\_internal) | Whether the ALB is internal-facing (Private). | `bool` | `false` | no |
-| <a name="input_port"></a> [port](#input\_port) | Listener and Target Group port. | `number` | `443` | no |
-| <a name="input_protocol"></a> [protocol](#input\_protocol) | Listener and Target Group protocol. | `string` | `"HTTPS"` | no |
+| <a name="input_port"></a> [port](#input\_port) | Listener and Target Group port. | `number` | `80` | no |
+| <a name="input_protocol"></a> [protocol](#input\_protocol) | Listener and Target Group protocol. | `string` | `"HTTP"` | no |
 | <a name="input_sg_ids"></a> [sg\_ids](#input\_sg\_ids) | List of Security Groups for the ALB. | `list(string)` | n/a | yes |
+| <a name="input_ssl_certificate_arn"></a> [ssl\_certificate\_arn](#input\_ssl\_certificate\_arn) | The certificate ARN to use with the HTTPS listener | `string` | `null` | no |
+| <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | SSL policy to use with the HTTPS listener. The latest value during the publication of this module version is "ELBSecurityPolicy-TLS13-1-2-2021-06". | `string` | `null` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of Subnets for the ALB. | `list(string)` | n/a | yes |
 | <a name="input_target_healthcheck_interval"></a> [target\_healthcheck\_interval](#input\_target\_healthcheck\_interval) | Target Group health check interval in seconds. | `number` | `10` | no |
 | <a name="input_target_healthcheck_timeout"></a> [target\_healthcheck\_timeout](#input\_target\_healthcheck\_timeout) | Target Group health check timeout in seconds. | `number` | `5` | no |
