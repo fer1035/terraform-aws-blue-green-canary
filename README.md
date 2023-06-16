@@ -22,9 +22,9 @@ The **traffic_distribution** parameter controls how much traffic flows to the Bl
 
 ## Minimum Prerequisites For Testing
 
-> The [full example code](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.6/examples) shows a more elaborate configuration using multiple modules and web server Instances separate from this module for more modular target attachments.
+> The [full example code](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.7/examples) shows a more elaborate configuration using multiple modules and web server Instances separate from this module for more modular target attachments.
 
-The following prerequisites are for the [simple example](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.6/examples):
+The following prerequisites are for the [simple example](https://github.com/fer1035/terraform-aws-blue-green-canary/tree/v1.1.7/examples):
 
 - A VPC with at least 2 public Subnets for the ALB.
 - A Security Group within the same VPC as above that allows corresponding traffic to the ALB.
@@ -35,14 +35,14 @@ The following prerequisites are for the [simple example](https://github.com/fer1
 - Configure your web servers to output Blue-Green indicators.
 
     ```
-    # Blue Server (assuming Amazon Linux 2023 EC2 Instances)
+    # Blue Server (assuming Amazon Linux 2 AMI)
     sudo yum update -y
     sudo yum install httpd -y
     sudo systemctl enable httpd
     sudo systemctl start httpd
     sudo echo "Blue" > /var/www/html/index.html
 
-    # Green Server (assuming Amazon Linux 2023 EC2 Instances)
+    # Green Server (assuming Amazon Linux 2 AMI)
     sudo yum update -y
     sudo yum install httpd -y
     sudo systemctl enable httpd
