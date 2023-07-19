@@ -2,6 +2,20 @@
 
 A Terraform module to perform Blue-Green / Canary deployments using AWS Application Load Balancer (ALB).
 
+## Deployment Strategies
+
+This module allows you to use either or a combinatino of the following:
+
+- [Blue-Green](https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/bluegreen-deployments.html)
+- [Canary](https://wa.aws.amazon.com/wellarchitected/2020-07-02T19-33-23/wat.concept.canary-deployment.en.html)
+
+When and why:
+
+- When you have infrastructure with running applications since there would be no purpose to routing users to an empty infrastructure.
+- When you need to test a new version of your infrastructure and applications on a subnet of users to see if everything is working as expected.
+- When you need to be able to rollback quickly to the previous version when something is not working as expected.
+- When in-house integration tests are insufficient to determine the impacts of changes to your infrastructure and application, and you need to perform live tests with real users.
+
 ## Traffic Distribution
 
 The **traffic_distribution** parameter controls how much traffic flows to the Blue vs. Green server.
